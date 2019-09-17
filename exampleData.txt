@@ -1,0 +1,69 @@
+"matiere": "Analyse"
+"descr": "une matière que j'adore <3"
+"day": 2				//0=lundi, etc --> 4=vendredi
+
+
+"title1": "Moodle"
+"content1": "moodle.epfl.ch/ANALyse"
+
+"title2": "Moodle INSC"
+"content2": "moodle.epfl,ch/ANALyseEnPlusFun"
+
+"title3": "Téléphone Professeur"
+"content3": "+33 6 666 666 66"
+
+"notesMtr": "revoir chapitre 4.2", "Je déteste les haricots", "CE06 my love"
+
+______________________________________________________________________
+
+"Série": 1
+
+"related": "4.3", "5", "2", "jacobien"
+
+"markers": "difficile", "ubvds", "influence de Victor", "4", "7/7<:^^~"
+
+"structure": "1>a>i-ii<b>i-ii<<2>a-b>i-ii<c<3>a-b<4<"
+
+"data":
+	{
+		"name": "1ai"
+		"date": 20190918
+		"time": "03::40"
+		"mark": 0		//0=raté, 1=incomplet, 2=réussi
+		"markers": "facile", "Mon nom est Peter", "eviV elicéC", "c'est fourbe"
+	},
+
+"data":
+	{
+		"name": "1aii"
+		"date": 20190926
+		"time": "65:10"
+		"mark": 2		//0=raté, 1=incomplet, 2=réussi
+		"markers": "GORGEOUS", "fast", "eviV elicéC"
+	},
+
+
+
+
+/* for development: structure of the series is
+1
+	a
+		i
+		ii
+	b
+		i
+		ii
+2
+	a
+	b
+		i
+		ii
+		iii
+	c
+3
+	a
+	b
+4
+
+is interpreted as
+*/
