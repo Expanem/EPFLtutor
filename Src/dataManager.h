@@ -2,16 +2,23 @@
   \file   dataManager.h
   \brief  Import, save, and export all data.
 */
-#include <iostream>
+#include <vector>
+#include <array>
+
 using namespace std;
 
-class CourseData{
-private:
-  string name;
+typedef struct serie {
+  int week;
+} serie;
+
+class CourseData {
 public:
   void write();
-}
-
-struct serie{
-  int week;
+private:
+  string name;
+  string description;
+  string notes;
+  int exerciseDay;
+  vector<array<string,2>> userContent;
+  vector<serie> series;
 };
