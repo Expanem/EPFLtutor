@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
         cout << "Type '--help' for a list of commands" << endl;
     } else {
         for (int argNb = 1; argNb < argc; argNb++) {
-          if (argv[argNb] == "-h" or argv[argNb] == "--help") {
+          if (string(argv[argNb]) == "-h" or string(argv[argNb]) == "--help") {
             cout << "EPFLtutor 0.0.1" << endl
                  << "This is free software: you are free to change and redistribute it, just name the main authors." << endl
                  << "See: https://github.com/Goneiross/EPFLtutor for more informations and tutorials." << endl << endl;
@@ -25,18 +25,18 @@ int main(int argc, char *argv[]) {
                  << "-c,  --create           " << endl;
             cout << "Options:" << endl;
             exit(0);
-          } else if (argv[argNb] == "--create") {
+          } else if (string(argv[argNb]) == "--create") {
             // Call create functions
-          } else if (argv[argNb] == "--list") {
+          } else if (string(argv[argNb]) == "--list") {
             // Call list functions
-          } else if (argv[argNb] == "--show") {
+          } else if (string(argv[argNb]) == "--show") {
             // Call show functions
-          } else if (argv[argNb] == "--stats") {
+          } else if (string(argv[argNb]) == "--stats") {
             // Call stats functions
-          } else if (argv[argNb] == "--edit") {
+          } else if (string(argv[argNb]) == "--edit") {
             // Call list functions
           } else {
-            cout << argv[argNb] << "is not recognized" << endl;
+            cout << string(argv[argNb]) << " is not recognized" << endl;
             exit(0);
           }
         }
