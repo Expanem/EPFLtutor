@@ -1,6 +1,6 @@
-"matiere": "Analyse"
-"descr": "une matière que j'adore <3"
-"day": 2				//0=lundi, etc --> 4=vendredi
+"subject": "Analyse"
+"descr": "une matiÃ¨re que j'adore <3"
+"day": 2				//0=Monday, etc --> 4=Friday
 
 
 "title1": "Moodle"
@@ -9,18 +9,20 @@
 "title2": "Moodle INSC"
 "content2": "moodle.epfl,ch/ANALyseEnPlusFun"
 
-"title3": "Téléphone Professeur"
+"title3": "TÃ©lÃ©phone Professeur"
 "content3": "+33 6 666 666 66"
 
-"notesMtr": "revoir chapitre 4.2", "Je déteste les haricots", "CE06 my love"
+"sbjctNotes": "revoir chapitre 4.2", "Je dÃ©teste les haricots", "CE06 my love"
 
 ______________________________________________________________________
 
-"Série": 1
+"series": 1
 
 "related": "4.3", "5", "2", "jacobien"
 
 "markers": "difficile", "ubvds", "influence de Victor", "4", "7/7<:^^~"
+
+"seriesNotes": "bulubulubulu", "refaire exercice 254", *cf. chapitre 6.7.8.9.0.1.2.3.4 du DZ"
 
 "structure": "1>a>i-ii<b>i-ii<<2>a-b>i-ii<c<3>a-b<4<"
 
@@ -29,8 +31,8 @@ ______________________________________________________________________
 		"name": "1ai"
 		"date": 20190918
 		"time": "03::40"
-		"mark": 0		//0=raté, 1=incomplet, 2=réussi
-		"markers": "facile", "Mon nom est Peter", "eviV elicéC", "c'est fourbe"
+		"mark": 0		//0=ratÃ©, 1=incomplet, 2=rÃ©ussi
+		"markers": "facile", "Mon nom est Peter", "eviV elicÃ©C", "c'est fourbe"
 	},
 
 "data":
@@ -38,11 +40,11 @@ ______________________________________________________________________
 		"name": "1aii"
 		"date": 20190926
 		"time": "65:10"
-		"mark": 2		//0=raté, 1=incomplet, 2=réussi
-		"markers": "GORGEOUS", "fast", "eviV elicéC"
+		"mark": 2		//0=ratÃ©, 1=incomplet, 2=rÃ©ussi
+		"markers": "GORGEOUS", "fast", "eviV elicÃ©C"
 	},
 
-
+"
 
 
 /* for development: structure of the series is
@@ -64,6 +66,4 @@ ______________________________________________________________________
 	a
 	b
 4
-
-is interpreted as
 */
