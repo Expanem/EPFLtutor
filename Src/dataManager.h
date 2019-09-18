@@ -2,9 +2,8 @@
   \file   dataManager.h
   \brief  Import, save, and export all data.
 */
-struct serie{
-  int week;
-}
+#include <iostream>
+using namespace std;
 
 class CourseData{
 private:
@@ -12,3 +11,7 @@ private:
 public:
   void write();
 }
+
+struct serie{
+  int week;
+};
