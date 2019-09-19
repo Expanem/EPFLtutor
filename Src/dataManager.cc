@@ -10,9 +10,10 @@
 
 using namespace std;
 
-void CourseData::write() {
+void CourseData::create() {
   askData();
   showData();
+  yamlWrite();
 }
 
 void CourseData::askData() {
@@ -92,4 +93,20 @@ void CourseData::showData() {
 
   cout << series.size() << " weeks for this course" << endl;
 
+}
+
+void CourseData::yamlWrite() {
+  ofstream file;
+  file.open(name+".txt");
+  file << "%YAML 1.2\n---\nCourse : " << name << endl
+  << "description : " << description << endl
+  << "day : " << exerciseDay << endl << endl;
+
+  file << "user data : " << endl;
+  for (size_t i = 0; i < userContent.size() ; i++) {
+    file<< "- " << userContent[i][0] << " : " << userContent[i][1] << endl;
+  }
+  file << endl;
+
+  file.close();
 }

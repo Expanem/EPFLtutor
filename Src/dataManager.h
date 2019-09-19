@@ -13,7 +13,7 @@ typedef struct serie {
 
 class CourseData {
 public:
-  void write();
+  void create();
 private:
   void askData();
   void showData();
