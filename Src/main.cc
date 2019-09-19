@@ -6,6 +6,8 @@
 #include <iostream>
 #include <string>
 
+#include "configuration.h"
+
 #define TYPE_SPECIFIC_HELP 0
 #define TYPE_SUBJECT 1
 #define TYPE_SERIE 2
@@ -45,6 +47,8 @@ int main(int argc, char *argv[]) {
             stats(argc, argv, argNb);
           } else if (string(argv[argNb]) == "-e" or string(argv[argNb]) == "--edit") {
             // Call list functions
+          } else if (string(argv[argNb]) == "--config") {
+            config(argc, argv, argNb);
           } else {
             cout << string(argv[argNb]) << " is not recognized" << endl;
             exit(0);
