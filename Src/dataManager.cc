@@ -26,11 +26,11 @@ void CourseData::askData() {
 
   cout << "What is the course name ?" << endl;
   getline(cin,name);
-  system("cls");
+
 
   cout << "What is the course description ?" << endl;
   getline(cin,description);
-  system("cls");
+
 
 
   do {
@@ -43,32 +43,31 @@ void CourseData::askData() {
     }
     if(exerciseDay == -1){cout << day << " is not a valid day (only lowercase please)." << endl;}
   } while (exerciseDay == -1);
-  system("cls");
+
 
   char userIntent;
   cout << "Do you want to save specific informations about this course ? y/n" << endl;
-
-  system("cls");
+  cin >> userIntent;
   for (int i = 0 ; userIntent == 'y' ; i++) {
     array<string,2> temp;
     cout << "Information name: ";
     cin.ignore();
     getline(cin,temp[0]);
     cout << "Information content: " << endl;
-    cin.ignore();
+    //cin.ignore();
     getline(cin,temp[1]);
     cout << temp[0] << ": " << temp[1] << endl;
     userContent.push_back(temp);
     cout << "Do you want to save more informations ? y/n" << endl;
     cin >> userIntent;
-    system("cls");
+
   }
 
   cout << "How many week for this course ?" << endl;
   unsigned weeks;
   cin >> weeks;
   series.resize(weeks);
-  system("cls");
+
 
   cout << "Course saved successfully!" << endl
        << "--------------------------" << endl;
