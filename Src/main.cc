@@ -19,7 +19,7 @@ typedef struct dataAdress {
 } dataAdress;
 
 void create(int argc, char *argv[], int &argNb);
-int list(int argc, char *argv[], int &argNb);
+void list(int argc, char *argv[], int &argNb);
 int show(int argc, char *argv[], int &argNb);
 int stats(int argc, char *argv[], int &argNb);
 int edit(int argc, char *argv[], int &argNb);
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
           } else if (string(argv[argNb]) == "--create") {
             create(argc, argv, argNb);
           } else if (string(argv[argNb]) == "--list") {
-            // Call list functions
+            list(argc, argv, argNb);
           } else if (string(argv[argNb]) == "--show") {
             // Call show functions
           } else if (string(argv[argNb]) == "--stats") {
@@ -75,6 +75,29 @@ void create(int argc, char *argv[], int &argNb) {
     }
   }
   cout << endl;
+}
+
+void list(int argc, char *argv[], int &argNb) {
+  argNb++;
+  if ( argNb >= argc){
+    cout << "Please, provide an argument to tell which list you want." << endl
+         << "For example, -subject to list all the subjects." << endl
+         << "For more informations, type --help" << endl;
+    exit(0);
+  }
+  if (string(argv[argNb]) == "-subject") {
+    // Call read function to parse subject names
+    // Cout list
+    exit(0);
+  } else if (string(argv[argNb]) == "-serie") {
+    // Call read function to parse data
+    // Cout list
+    exit(0);
+  } else if (string(argv[argNb]) == "-exercise") {
+    // Call read function to parse data
+    // Cout list
+    exit(0);
+  }
 }
 
 void help(){
