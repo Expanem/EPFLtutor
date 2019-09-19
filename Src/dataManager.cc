@@ -17,9 +17,11 @@ void CourseData::write() {
 void CourseData::askData() {
   cout<<"what is the course name ?"<<endl;
   cin>>name;
+  system("cls");
 
   cout<<"what is the course description ?"<<endl;
   cin>>description;
+  system("cls");
 
   do{
     cout<<"on wich day the exercices take place ?"<<endl
@@ -28,11 +30,30 @@ void CourseData::askData() {
     if(exerciseDay > 5 || exerciseDay < 0){
       cout<<exerciseDay<<" is not a valid day."<<endl;
     }
-  }while(exerciseDay < 5 && exerciseDay >= 0);
+  }while(!(exerciseDay < 5 && exerciseDay >= 0));
+  system("cls");
 
-  cout<<"what is the course name ?"<<endl;
-  cin>>name;
+  char userIntent;
+  cout<<"do you want to save specific informations about this course ? y/n"<<endl;
+  cin>>userIntent;
+  for (int i = 0 ; userIntent == 'y' ; i++) {
+    array<string,2> temp;
+    cout<<"info name ?"<<endl;
+    cin>>temp[0];
+    cout<<"information content ?"<<endl;
+    cin>>temp[1];
+    cout<<temp[0]<<" : "<<temp[1]<<endl;
+    userContent.push_back(temp);
+    cout<<"do you want to save more informations ? y/n"<<endl;
+    cin>>userIntent;
+    system("cls");
+  }
 
-  cout<<"what is the course name ?"<<endl;
-  cin>>name;
+  cout<<"how many week for this course ?"<<endl;
+  unsigned weeks;
+  cin>>weeks;
+  series.resize(weeks);
+  system("cls");
+
+  cout<<"informations saved successfully!"<<endl;
 }
