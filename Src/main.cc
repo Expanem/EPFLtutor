@@ -20,7 +20,7 @@ typedef struct dataAdress {
 
 void create(int argc, char *argv[], int &argNb);
 void list(int argc, char *argv[], int &argNb);
-int show(int argc, char *argv[], int &argNb);
+void show(int argc, char *argv[], int &argNb);
 int stats(int argc, char *argv[], int &argNb);
 int edit(int argc, char *argv[], int &argNb);
 void help();
@@ -98,6 +98,38 @@ void list(int argc, char *argv[], int &argNb) {
     // Cout list
     exit(0);
   }
+}
+
+void show(int argc, char *argv[], int &argNb){
+    argNb++;
+  if ( argNb >= argc){
+    cout << "Please, provide an argument to tell which information you want." << endl
+         << "For more informations, type --help" << endl;
+    exit(0);
+  }
+  int type;
+  dataAdress adress;
+  cout << "Showing:";
+  while (argNb < argc ) {
+    if (string(argv[argNb]) == "-subject") {
+      argNb++;
+      type = TYPE_SUBJECT;
+      cout << " subject ";
+      if (argNb < argc) { adress.subject = string(argv[argNb]); cout << adress.subject; argNb++; type = TYPE_SERIE; }
+    } else if (string(argv[argNb]) == "-serie") {
+      argNb++;
+      type = TYPE_SERIE;
+      cout << ", serie ";
+      if (argNb < argc) { adress.serie = string(argv[argNb]); cout << adress.serie ; argNb++; type = TYPE_EXERCISE; }
+    } else if (string(argv[argNb]) == "-exercise") {
+      argNb++;
+      type = TYPE_EXERCISE;
+      cout << ", exercise ";
+      if (argNb < argc) { adress.exercise = string(argv[argNb]); cout << adress.exercise; argNb++; }
+    }
+    // Get other arguments, for example which info : -all, -marks, -tags, ...
+  }
+  cout << endl;
 }
 
 void help(){
