@@ -9,15 +9,13 @@
 "descr": "une matière que j'adore <3"
 "day": 2				//0=Monday, etc --> 4=Friday
 
+"userData": 
+	{
+		"Moodle": "moodle.epfl.ch/ANALyse",
+		"Moodle INSC": "moodle.epfl,ch/ANALyseEnPlusFun",
+		"Telephone Professeur": "+33 6 666 666 66"
+	}
 
-"title1": "Moodle"
-"content1": "moodle.epfl.ch/ANALyse"
-
-"title2": "Moodle INSC"
-"content2": "moodle.epfl,ch/ANALyseEnPlusFun"
-
-"title3": "Telephone Professeur"
-"content3": "+33 6 666 666 66"
 
 "sbjctNotes": "revoir chapitre 4.2", "Je deteste les haricots", "CE06 my love"
 
@@ -33,25 +31,24 @@ ______________________________________________________________________
 
 "structure": "1>a>i-ii<b>i-ii<<2>a-b>i-ii<c<3>a-b<4<"
 
-"data":
+"exercises":
 	{
-		"name": "1ai"
+		"1ai":
+		{
 		"date": 20190918
 		"time": "03::40"
 		"mark": 0		//0=failed, 1=incomplet, 2=valid
 		"markers": "facile", "Mon nom est Peter", "eviV eliceC", "c'est fourbe"
-	},
-
-"data":
-	{
-		"name": "1aii"
+		}
+		"1aii":
+		{
+		"name": 
 		"date": 20190926
 		"time": "65:10"
 		"mark": 2		//0=failed, 1=incomplet, 2=valid
 		"markers": "GORGEOUS", "fast", "eviV eliceC"
-	},
-
-"
+		}
+	}
 
 
 /* for development: structure of the series is
