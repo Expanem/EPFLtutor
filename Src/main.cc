@@ -75,6 +75,7 @@ void create(int argc, char *argv[], int &argNb) {
     }
   }
   cout << endl;
+  exit(0);
 }
 
 void list(int argc, char *argv[], int &argNb) {
@@ -130,6 +131,7 @@ void show(int argc, char *argv[], int &argNb){
     // Get other arguments, for example which info : -all, -marks, -tags, ...
   }
   cout << endl;
+  exit(0);
 }
 
 void help(){
