@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 
+#define TYPE_SPECIFIC_HELP 0
 #define TYPE_SUBJECT 1
 #define TYPE_SERIE 2
 #define TYPE_EXERCISE 3
@@ -55,11 +56,21 @@ int main(int argc, char *argv[]) {
 
 void create(int argc, char *argv[], int &argNb) {
   argNb++;
+  if ( argNb >= argc){
+    cout << "Please, provide an argument to tell what you want to create." << endl
+         << "For example, -subject to create a new subject." << endl
+         << "For more informations, type --help" << endl;
+    exit(0);
+  }
   int type;
   dataAdress adress;
   cout << "Creating:";
   parseTypeArg(argc, argv, argNb, type, adress);
   cout << endl;
+  if (type == TYPE_SPECIFIC_HELP){
+    cout << "This is specific help" << endl;
+    exit(0);
+  }
   exit(0);
 }
 
@@ -71,7 +82,10 @@ void list(int argc, char *argv[], int &argNb) {
          << "For more informations, type --help" << endl;
     exit(0);
   }
-  if (string(argv[argNb]) == "-subject") {
+  if (string(argv[argNb]) == "--help") {
+    cout << "This is specific help" << endl;
+    exit(0);
+  } if (string(argv[argNb]) == "-subject") {
     // Call read function to parse subject names
     // Cout list
     exit(0);
@@ -97,12 +111,23 @@ void show(int argc, char *argv[], int &argNb){
   dataAdress adress;
   cout << "Showing:";
   parseTypeArg(argc, argv, argNb, type, adress);
-  // Get other arguments, for example which info : -all, -marks, -tags, ...
   cout << endl;
+  if (type == TYPE_SPECIFIC_HELP){
+    cout << "This is specific help" << endl;
+    exit(0);
+  }
+  // Get other arguments, for example which info : -all, -marks, -tags, ...
   exit(0);
 }
 
 void stats(int argc, char *argv[], int &argNb){
+  argNb++;
+  if ( argNb < argc){
+    if (string(argv[argNb]) == "--help") {
+      cout << "This is specific help" << endl;
+      exit(0);
+    }
+  }
   // To do later
   exit(0);
 }
@@ -130,7 +155,11 @@ void help(){
 
 void parseTypeArg(int argc, char *argv[], int &argNb, int &type, dataAdress &adress){
   while (argNb < argc ) {
-    if (string(argv[argNb]) == "-subject") {
+    if (string(argv[argNb]) == "--help") {
+      argNb++;
+      type = TYPE_SPECIFIC_HELP;
+      return;
+    } else if (string(argv[argNb]) == "-subject") {
       argNb++;
       type = TYPE_SUBJECT;
       cout << " subject ";
