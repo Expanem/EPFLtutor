@@ -12,36 +12,51 @@ using namespace std;
 
 void CourseData::write() {
   askData();
+  showData();
 }
 
 void CourseData::askData() {
+
+  array<string,5> weekDays;
+  weekDays[0] = "monday";
+  weekDays[1] = "tuesday";
+  weekDays[2] = "wednesday";
+  weekDays[3] = "thursday";
+  weekDays[4] = "friday";
+
   cout << "What is the course name ?" << endl;
-  cin >> name;
+  getline(cin,name);
   system("cls");
 
   cout << "What is the course description ?" << endl;
-  cin >> description;
+  getline(cin,description);
   system("cls");
 
+
   do {
-    cout << "On wich day the exercices take place ?" << endl
-         << "0=Monday --> 4=Friday" << endl; // The user has to put Monday and not 0
-    cin >> exerciseDay;
-    if(exerciseDay > 5 || exerciseDay < 0){
-      cout << exerciseDay << " is not a valid day." << endl;
+    cout << "On which day the exercices take place ?" << endl;
+    string day;
+    getline(cin,day);
+    exerciseDay = -1;
+    for (size_t i = 0; i < 5; i++) {
+      if (weekDays[i].compare(day) == 0) {exerciseDay = i;}
     }
-  } while (!(exerciseDay < 5 && exerciseDay >= 0));
+    if(exerciseDay == -1){cout << day << " is not a valid day (only lowercase please)." << endl;}
+  } while (exerciseDay == -1);
   system("cls");
 
   char userIntent;
   cout << "Do you want to save specific informations about this course ? y/n" << endl;
-  cin >> userIntent;
+
+  system("cls");
   for (int i = 0 ; userIntent == 'y' ; i++) {
     array<string,2> temp;
     cout << "Information name: ";
-    cin >> temp[0];
+    cin.ignore();
+    getline(cin,temp[0]);
     cout << "Information content: " << endl;
-    cin >> temp[1];
+    cin.ignore();
+    getline(cin,temp[1]);
     cout << temp[0] << ": " << temp[1] << endl;
     userContent.push_back(temp);
     cout << "Do you want to save more informations ? y/n" << endl;
@@ -55,5 +70,27 @@ void CourseData::askData() {
   series.resize(weeks);
   system("cls");
 
-  cout << "Informations saved successfully!" << endl;
+  cout << "Course saved successfully!" << endl
+       << "--------------------------" << endl;
+}
+
+void CourseData::showData() {
+
+  array<string,5> weekDays;
+  weekDays[0] = "monday";
+  weekDays[1] = "tuesday";
+  weekDays[2] = "wednesday";
+  weekDays[3] = "thursday";
+  weekDays[4] = "friday";
+
+  cout << "Course : " << name << endl;
+  cout << "description: " << description << endl;
+  cout << "exercises on " << weekDays[exerciseDay] << endl;
+
+  for (size_t i = 0; i < userContent.size() ; i++) {
+    cout << userContent[i][0] << " : " << userContent[i][1] << endl;
+  }
+
+  cout << series.size() << " weeks for this course" << endl;
+
 }

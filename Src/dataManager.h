@@ -16,6 +16,8 @@ public:
   void write();
 private:
   void askData();
+  void showData();
+  void yamlWrite();
   string name;
   string description;
   string notes;
