@@ -15,7 +15,7 @@ class CourseData {
 public:
   void write();
 private:
-  void askData;
+  void askData();
   string name;
   string description;
   string notes;
