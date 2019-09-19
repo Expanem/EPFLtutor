@@ -4,6 +4,7 @@
 */
 #include <fstream>
 #include <string>
+#include <iostream>
 using namespace std;
 
 #include "dataManager.h"
