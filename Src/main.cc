@@ -21,7 +21,7 @@ typedef struct dataAdress {
 void create(int argc, char *argv[], int &argNb);
 void list(int argc, char *argv[], int &argNb);
 void show(int argc, char *argv[], int &argNb);
-int stats(int argc, char *argv[], int &argNb);
+void stats(int argc, char *argv[], int &argNb);
 int edit(int argc, char *argv[], int &argNb);
 void help();
 
@@ -39,9 +39,9 @@ int main(int argc, char *argv[]) {
           } else if (string(argv[argNb]) == "--list") {
             list(argc, argv, argNb);
           } else if (string(argv[argNb]) == "--show") {
-            // Call show functions
+            show(argc, argv, argNb);
           } else if (string(argv[argNb]) == "--stats") {
-            // Call stats functions
+            stats(argc, argv, argNb);
           } else if (string(argv[argNb]) == "--edit") {
             // Call list functions
           } else {
@@ -99,6 +99,11 @@ void show(int argc, char *argv[], int &argNb){
   parseTypeArg(argc, argv, argNb, type, adress);
   // Get other arguments, for example which info : -all, -marks, -tags, ...
   cout << endl;
+  exit(0);
+}
+
+void stats(int argc, char *argv[], int &argNb){
+  // To do later
   exit(0);
 }
 
