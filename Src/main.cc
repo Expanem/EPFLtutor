@@ -6,9 +6,19 @@
 #include <iostream>
 #include <string>
 
+#define TYPE_SUBJECT 1
+#define TYPE_SERIE 2
+#define TYPE_EXERCISE 3
+
 using namespace std;
 
-int create(int argc, char *argv[], int &argNb);
+typedef struct dataAdress {
+  string subject;
+  string serie;
+  string exercise;
+} dataAdress;
+
+void create(int argc, char *argv[], int &argNb);
 int list(int argc, char *argv[], int &argNb);
 int show(int argc, char *argv[], int &argNb);
 int stats(int argc, char *argv[], int &argNb);
@@ -23,7 +33,7 @@ int main(int argc, char *argv[]) {
           if (string(argv[argNb]) == "-h" or string(argv[argNb]) == "--help") {
             help();
           } else if (string(argv[argNb]) == "--create") {
-            // Call create functions
+            create(argc, argv, argNb);
           } else if (string(argv[argNb]) == "--list") {
             // Call list functions
           } else if (string(argv[argNb]) == "--show") {
@@ -41,15 +51,30 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-int create(int argc, char *argv[], int &argNb){
-  if (string(argv[argNb]) == "-subject") {
-
-  } else if (string(argv[argNb]) == "-serie") {
-
-  } else if (string(argv[argNb]) == "-exercise") {
-
+void create(int argc, char *argv[], int &argNb) {
+  argNb++;
+  int type;
+  dataAdress adress;
+  cout << "Creating:";
+  while (argNb < argc ) {
+    if (string(argv[argNb]) == "-subject") {
+      argNb++;
+      type = TYPE_SUBJECT;
+      cout << " subject ";
+      if (argNb < argc) { adress.subject = string(argv[argNb]); cout << adress.subject; argNb++; type = TYPE_SERIE; }
+    } else if (string(argv[argNb]) == "-serie") {
+      argNb++;
+      type = TYPE_SERIE;
+      cout << ", serie ";
+      if (argNb < argc) { adress.serie = string(argv[argNb]); cout << adress.serie ; argNb++; type = TYPE_EXERCISE; }
+    } else if (string(argv[argNb]) == "-exercise") {
+      argNb++;
+      type = TYPE_EXERCISE;
+      cout << ", exercise ";
+      if (argNb < argc) { adress.exercise = string(argv[argNb]); cout << adress.exercise; argNb++; }
+    }
   }
-  return 0;
+  cout << endl;
 }
 
 void help(){
