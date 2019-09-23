@@ -7,6 +7,7 @@
 #include <string>
 
 #include "configuration.h"
+#include "dataManager.h"
 
 #define TYPE_SPECIFIC_HELP 0
 #define TYPE_SUBJECT 1
@@ -73,10 +74,31 @@ void create(int argc, char *argv[], int &argNb) {
   cout << "Creating:";
   parseTypeArg(argc, argv, argNb, type, adress);
   cout << endl;
-  if (type == TYPE_SPECIFIC_HELP) {
+
+  CourseData newData;
+
+  switch (type)
+  {
+  case TYPE_SPECIFIC_HELP:
     cout << "This is specific help" << endl;
-    exit(0);
+    break;
+
+  case TYPE_SUBJECT:
+    newData.askData();
+    newData.yamlWrite();
+    break;
+
+  case TYPE_SERIE:
+    break;
+
+  case TYPE_EXERCISE:
+    break;
+
+  default: 
+    cout << "ERROR, wrong TYPE" << endl;
+    break;
   }
+
   exit(0);
 }
 
