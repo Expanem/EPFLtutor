@@ -84,8 +84,7 @@ void create(int argc, char *argv[], int &argNb) {
     break;
 
   case TYPE_SUBJECT:
-    newData.askData();
-    newData.yamlWrite();
+    newData.create();
     break;
 
   case TYPE_SERIE:
