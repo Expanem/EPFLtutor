@@ -70,11 +70,11 @@ void create(int argc, char *argv[], int &argNb) {
   bool realTime = false;
   int type;
   dataAdress adress;
-  if (string(argv[argNb]) == "-realTime") { realTime = true; }
-  cout << "Creating:";
+  // if (string(argv[argNb]) == "-realTime") { realTime = true; }
+  cout << "Creating:" << endl;
   parseTypeArg(argc, argv, argNb, type, adress);
   cout << endl;
-
+  cout << type << endl;
   CourseData newData;
 
   switch (type)
@@ -84,6 +84,7 @@ void create(int argc, char *argv[], int &argNb) {
     break;
 
   case TYPE_SUBJECT:
+    cout << "Creating new Subject" << endl;
     newData.create();
     break;
 
@@ -203,6 +204,8 @@ void parseTypeArg(int argc, char *argv[], int &argNb, int &type, dataAdress &adr
       type = TYPE_EXERCISE;
       cout << ", exercise ";
       if (argNb < argc) { adress.exercise = string(argv[argNb]); cout << adress.exercise; argNb++; }
+    } else {
+      argNb++;
     }
   }
 }
