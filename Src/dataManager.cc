@@ -10,7 +10,13 @@
 
 using namespace std;
 
-void CourseData::create() {
+CourseData::CourseData(string name){
+/** Constructor to import an existing course **/
+
+}
+
+CourseData::CourseData(){
+/** Constructor to create a new course **/
   askData();
   showData();
   yamlWrite();

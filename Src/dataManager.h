@@ -25,7 +25,9 @@ class Serie {
 
 class CourseData {
 public:
-  void create();
+  CourseData();
+  CourseData(string name);
+  ~CourseData();
 private:
   void askData();
   void showData();
