@@ -75,8 +75,8 @@ void create(int argc, char *argv[], int &argNb) {
   parseTypeArg(argc, argv, argNb, type, adress);
   cout << endl;
   cout << type << endl;
-  CourseData newData;
-
+  CourseData* course = new CourseData();
+  
   switch (type)
   {
   case TYPE_SPECIFIC_HELP:
@@ -85,7 +85,6 @@ void create(int argc, char *argv[], int &argNb) {
 
   case TYPE_SUBJECT:
     cout << "Creating new Subject" << endl;
-    newData.create();
     break;
 
   case TYPE_SERIE:

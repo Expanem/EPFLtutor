@@ -116,3 +116,23 @@ void CourseData::yamlWrite() {
 
   file.close();
 }
+
+Serie::Serie(string name){
+  /** Constructor to import an existing serie **/
+}
+
+Serie::Serie(){
+  /** Constructor to create a new serie **/
+}
+
+void Serie::askData(){
+
+}
+
+void Serie::showData(){
+
+}
+
+void Serie::yamlWrite(){
+
+}

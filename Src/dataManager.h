@@ -13,29 +13,33 @@ typedef struct exercice {
   vector<string> tags;
 } exercice;
 
-
 class Serie {
   public:
-    Serie(){};
+    Serie(string name);
+    Serie();
+    ~Serie(){};
   private:
+    void askData();
+    void showData();
+    void yamlWrite();
     int week;
     string structure;
     vector<exercice> exercices;
 }; 
 
 class CourseData {
-public:
-  CourseData();
-  CourseData(string name);
-  ~CourseData();
-private:
-  void askData();
-  void showData();
-  void yamlWrite();
-  string name;
-  string description;
-  string notes;
-  int exerciseDay;
-  vector<array<string,2>> userContent;
-  vector<Serie> series;
+  public:
+    CourseData();
+    CourseData(string name);
+    ~CourseData(){};
+  private:
+    void askData();
+    void showData();
+    void yamlWrite();
+    string name;
+    string description;
+    string notes;
+    int exerciseDay;
+    vector<array<string,2>> userContent;
+    vector<Serie> series;
 };
