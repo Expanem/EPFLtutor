@@ -7,9 +7,21 @@
 
 using namespace std;
 
-typedef struct serie {
-  int week;
-} serie;
+typedef struct exercice {
+  string id;
+  int timeToComplete;
+  vector<string> tags;
+} exercice;
+
+
+class Serie {
+  public:
+    Serie(){};
+  private:
+    int week;
+    string structure;
+    vector<exercice> exercices;
+}; 
 
 class CourseData {
 public:
@@ -23,5 +35,5 @@ private:
   string notes;
   int exerciseDay;
   vector<array<string,2>> userContent;
-  vector<serie> series;
+  vector<Serie> series;
 };
