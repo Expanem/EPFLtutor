@@ -9,7 +9,10 @@ using namespace std;
 
 typedef struct exercice {
   string id;
+  int date;
+  int time;
   int timeToComplete;
+  int mark;
   vector<string> tags;
 } exercice;
 
@@ -22,8 +25,12 @@ class Serie {
     void askData();
     void showData();
     void yamlWrite();
+    int ID;
     int week;
     string structure;
+    string related;
+    vector<string> tags;
+    vector<string> notes;
     vector<exercice> exercices;
 }; 
 
