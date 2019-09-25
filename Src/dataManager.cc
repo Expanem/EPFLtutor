@@ -156,7 +156,7 @@ void Serie::realTimeEx(){
   clock_t t;
   vector<int> times;
   string action;
-  while(action.compare("exit") == 0){
+  while(action.compare("exit") != 0){
     t = clock();
     cin >> action;
     times.push_back(clock() - t);
