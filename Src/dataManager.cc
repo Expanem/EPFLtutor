@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include <time.h> 
 
 #include "dataManager.h"
 
@@ -149,4 +150,15 @@ void Serie::yamlWrite(){
 
 void Serie::yamlRead(){
 
+}
+
+void Serie::realTimeEx(){
+  clock_t t;
+  vector<int> times;
+  string action;
+  while(action.compare("exit") == 0){
+    t = clock();
+    cin >> action;
+    times.push_back(clock() - t);
+  }
 }

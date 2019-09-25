@@ -26,6 +26,7 @@ class Serie {
     void showData();
     void yamlWrite();
     void yamlRead();
+    void realTimeEx();
     int ID;
     int week;
     string structure;
