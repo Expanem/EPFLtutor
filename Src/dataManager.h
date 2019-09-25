@@ -25,6 +25,7 @@ class Serie {
     void askData();
     void showData();
     void yamlWrite();
+    void yamlRead();
     int ID;
     int week;
     string structure;
@@ -43,6 +44,7 @@ class CourseData {
     void askData();
     void showData();
     void yamlWrite();
+    void yamlRead();
     string name;
     string description;
     string notes;

@@ -12,7 +12,8 @@ using namespace std;
 
 CourseData::CourseData(string name){
 /** Constructor to import an existing course **/
-
+  yamlRead();
+  showData();
 }
 
 CourseData::CourseData(){
@@ -117,12 +118,21 @@ void CourseData::yamlWrite() {
   file.close();
 }
 
+void CourseData::yamlRead(){
+  
+}
+
 Serie::Serie(string name){
   /** Constructor to import an existing serie **/
+  yamlRead();
+  showData();
 }
 
 Serie::Serie(){
   /** Constructor to create a new serie **/
+  askData();
+  showData();
+  yamlWrite();
 }
 
 void Serie::askData(){
@@ -134,5 +144,9 @@ void Serie::showData(){
 }
 
 void Serie::yamlWrite(){
+
+}
+
+void Serie::yamlRead(){
 
 }
