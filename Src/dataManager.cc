@@ -105,7 +105,7 @@ void CourseData::showData() {
 
 void CourseData::yamlWrite() {
   ofstream file;
-  file.open(name+".txt");
+  file.open(name+".save");
   file << "%YAML 1.2\n---\nCourse : " << name << endl
   << "description : " << description << endl
   << "day : " << exerciseDay << endl << endl;
