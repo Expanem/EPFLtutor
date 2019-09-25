@@ -7,6 +7,7 @@
 #include <string>
 
 #include "configuration.h"
+#include "dataManager.h"
 
 #define TYPE_SPECIFIC_HELP 0
 #define TYPE_SUBJECT 1
@@ -67,15 +68,29 @@ void create(int argc, char *argv[], int &argNb) {
     exit(0);
   }
   bool realTime = false;
-  int type;
+  int type = -1;
   dataAdress adress;
-  if (string(argv[argNb]) == "-realTime") { realTime = true; }
-  cout << "Creating:";
+  // if (string(argv[argNb]) == "-realTime") { realTime = true; }
   parseTypeArg(argc, argv, argNb, type, adress);
   cout << endl;
-  if (type == TYPE_SPECIFIC_HELP) {
+  cout << type << endl;
+  CourseData* course;
+  switch (type)
+  {
+  case TYPE_SPECIFIC_HELP:
     cout << "This is specific help" << endl;
-    exit(0);
+    break;
+  case TYPE_SUBJECT:
+    cout << "Creating new Course" << endl;
+    course = new CourseData();
+    break;
+  case TYPE_SERIE:
+    break;
+  case TYPE_EXERCISE:
+    break;
+  default: 
+    cout << "ERROR, wrong TYPE" << endl;
+    break;
   }
   exit(0);
 }
@@ -182,6 +197,8 @@ void parseTypeArg(int argc, char *argv[], int &argNb, int &type, dataAdress &adr
       type = TYPE_EXERCISE;
       cout << ", exercise ";
       if (argNb < argc) { adress.exercise = string(argv[argNb]); cout << adress.exercise; argNb++; }
+    } else {
+      argNb++;
     }
   }
 }
