@@ -68,36 +68,30 @@ void create(int argc, char *argv[], int &argNb) {
     exit(0);
   }
   bool realTime = false;
-  int type;
+  int type = -1;
   dataAdress adress;
   // if (string(argv[argNb]) == "-realTime") { realTime = true; }
-  cout << "Creating:" << endl;
   parseTypeArg(argc, argv, argNb, type, adress);
   cout << endl;
   cout << type << endl;
-  CourseData* course = new CourseData();
-  
+  CourseData* course;
   switch (type)
   {
   case TYPE_SPECIFIC_HELP:
     cout << "This is specific help" << endl;
     break;
-
   case TYPE_SUBJECT:
-    cout << "Creating new Subject" << endl;
+    cout << "Creating new Course" << endl;
+    course = new CourseData();
     break;
-
   case TYPE_SERIE:
     break;
-
   case TYPE_EXERCISE:
     break;
-
   default: 
     cout << "ERROR, wrong TYPE" << endl;
     break;
   }
-
   exit(0);
 }
 
