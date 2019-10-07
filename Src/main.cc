@@ -31,6 +31,8 @@ void help();
 
 void parseTypeArg(int argc, char *argv[], int &argNb, int &type, dataAdress &adress);
 
+static ConfigData configuration;
+
 int main(int argc, char *argv[]) {
     if (argc == 1) {
         cout << "Type '--help' for a list of commands" << endl;
@@ -49,7 +51,7 @@ int main(int argc, char *argv[]) {
           } else if (string(argv[argNb]) == "-e" or string(argv[argNb]) == "--edit") {
             // Call list functions
           } else if (string(argv[argNb]) == "--config") {
-            config(argc, argv, argNb);
+            configuration.config(argc, argv, argNb);
           } else {
             cout << string(argv[argNb]) << " is not recognized" << endl;
             exit(0);
