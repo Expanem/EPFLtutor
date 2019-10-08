@@ -1,4 +1,4 @@
 .vscode/
-
+*.conf
 *.o
 EPFLtutor
