@@ -45,6 +45,7 @@ Serie* CourseData::getSerie(int id) {
     }
   }
   cout << "Wrong serie id, please check informations you entered" << endl;
+  exit(1);
 }
 
 void CourseData::askData() {
