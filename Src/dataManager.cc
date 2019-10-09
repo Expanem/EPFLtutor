@@ -211,6 +211,8 @@ void Serie::yamlWrite() {
   for (size_t i = 0; exercises.size(); i++){
     exercises[i]->yamlWrite();
   }
+  flux << endl;
+  flux.close();
 }
 
 void Serie::yamlRead() {}
