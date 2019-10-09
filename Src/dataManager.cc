@@ -24,6 +24,29 @@ CourseData::CourseData() {
   yamlWrite();
 }
 
+void CourseData::addSerie() {
+  series.push_back(new Serie);
+}
+
+Serie* CourseData::getSerie(string name) {
+  for (int i = 0; i < series.size; i++) {
+    if (series[i]->getName() == name){
+      return series[i];
+    }
+  }
+  cout << "Wrong serie name, please check informations you entered" << endl;
+  exit(1);
+}
+
+Serie* CourseData::getSerie(int id) {
+  for (int i = 0; i < series.size; i++) {
+    if (series[i]->getId() == id){
+      return series[i];
+    }
+  }
+  cout << "Wrong serie id, please check informations you entered" << endl;
+}
+
 void CourseData::askData() {
   array<string, 5> weekDays;
   weekDays[0] = "monday";
@@ -124,6 +147,10 @@ Serie::Serie() {
   askData();
   showData();
   yamlWrite();
+}
+
+void Serie::addExercice() {
+  exercices.push_back(new exercice);
 }
 
 void Serie::askData() {}

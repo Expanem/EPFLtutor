@@ -21,7 +21,9 @@ public:
   Serie(string name);
   Serie();
   ~Serie(){};
-
+  void addExercice();
+  int getId() {return ID;};
+  string getName() {return name;};
 private:
   void askData();
   void showData();
@@ -30,11 +32,12 @@ private:
   void realTimeEx();
   int ID;
   int week;
+  string name; 
   string structure;
   string related;
   vector<string> tags;
   vector<string> notes;
-  vector<exercice> exercices;
+  vector<exercice *> exercices;
 };
 
 class CourseData {
@@ -42,6 +45,9 @@ public:
   CourseData();
   CourseData(string name);
   ~CourseData(){};
+  void addSerie();
+  Serie* getSerie(string name);
+  Serie* getSerie(int id);
 
 private:
   void askData();
@@ -53,5 +59,5 @@ private:
   string notes;
   int exerciseDay;
   vector<array<string, 2>> userContent;
-  vector<Serie> series;
+  vector<Serie *> series;
 };
