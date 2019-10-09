@@ -191,7 +191,27 @@ void Serie::askData() {
 
 void Serie::showData() {}
 
-void Serie::yamlWrite() {}
+void Serie::yamlWrite() {
+  ofstream flux(name + ".save");
+  flux << endl
+       << "serie: " << ID << endl
+       << "week: " << week << endl
+       << "name: " << name << endl
+       << "structure: " << structure << endl
+       << "related: " << related << endl;
+  flux << "tags: ";
+  for (size_t i = 0; tags.size(); i++){
+    flux << tags[i];
+  }
+  flux << endl;
+  flux << "notes: ";
+  for (size_t i = 0; notes.size(); i++){
+    flux << notes[i];
+  }
+  for (size_t i = 0; exercises.size(); i++){
+    exercises[i]->yamlWrite();
+  }
+}
 
 void Serie::yamlRead() {}
 
