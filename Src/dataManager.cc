@@ -153,7 +153,40 @@ void Serie::addExercise() {
   exercises.push_back(new Exercise);
 }
 
-void Serie::askData() {}
+void Serie::askData() {
+  cout << "Which number is this serie ?" << endl;
+  cin >> ID;
+  cout << "Do you want to add a specific name ? (just press enter to ignore)" << endl;
+  cin >> name;
+  cout << "Which week is it ?" << endl;
+  cin >> week;
+  cout << "Would you like to give a structure ? (press enter to ignore)" << endl;
+  cin >> structure;
+  cout << "What is the topic related to this serie ?" << endl;
+  cin >> related;
+  cout << "Do you want to add tags ? (leave empty when you are finished)" << endl;
+  string inputTmp;
+  cin >> inputTmp;
+  while (inputTmp != "") {
+    tags.push_back(inputTmp);
+    cin >> inputTmp;
+  }
+  cout << "Would you like to add some personal notes ? (leave empty when done)" << endl;
+  cin >> inputTmp;
+  while (inputTmp != "") {
+    notes.push_back(inputTmp);
+    cin >> inputTmp;
+  }
+  cout << "Do you want to interactively add exercises ? (y/n)" << endl;
+  cin >> inputTmp;
+  if (inputTmp == "y") {
+    cout << "To add ..." << endl;
+    exit(1);
+    // TO ADD
+  } else {
+    exit (0);
+  }
+}
 
 void Serie::showData() {}
 
