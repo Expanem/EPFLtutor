@@ -25,7 +25,7 @@ CourseData::CourseData() {
 }
 
 void CourseData::addSerie() {
-  series.push_back(new Serie);
+  series.push_back(new Serie(name));
 }
 
 Serie* CourseData::getSerie(string name) {
@@ -137,13 +137,13 @@ void CourseData::yamlWrite() {
 
 void CourseData::yamlRead() {}
 
-Serie::Serie(string name) {
+Serie::Serie(string courseName, string name) {
   /** Constructor to import an existing serie **/
   yamlRead();
   showData();
 }
 
-Serie::Serie() {
+Serie::Serie(string courseName) {
   /** Constructor to create a new serie **/
   askData();
   showData();
@@ -151,7 +151,7 @@ Serie::Serie() {
 }
 
 void Serie::addExercise() {
-  exercises.push_back(new Exercise);
+  exercises.push_back(new Exercise(courseName));
 }
 
 void Serie::askData() {
@@ -192,7 +192,7 @@ void Serie::askData() {
 void Serie::showData() {}
 
 void Serie::yamlWrite() {
-  ofstream flux(name + ".save");
+  ofstream flux(courseName + ".save");
   flux << endl
        << "serie: " << ID << endl
        << "week: " << week << endl
@@ -229,14 +229,14 @@ void Serie::realTimeEx() {
   }
 }
 
-Exercise::Exercise() {
+Exercise::Exercise(string courseName) {
   /** Constructor to create a new exercise **/
   askData();
   showData();
   yamlWrite();
 }
 
-Exercise::Exercise(string name) {
+Exercise::Exercise(string courseName, string name) {
   /** Constructor to import an existing serie **/
   yamlRead();
   showData();

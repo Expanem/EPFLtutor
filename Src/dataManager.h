@@ -9,8 +9,8 @@ using namespace std;
 
 class Exercise {
   public:
-    Exercise();
-    Exercise(string name);
+    Exercise(string courseName);
+    Exercise(string courseName, string name);
     ~Exercise();
   private:
     void askData();
@@ -23,12 +23,13 @@ class Exercise {
     int timeToComplete;
     int mark;
     vector<string> tags;
+    string courseName;
 };
 
 class Serie {
 public:
-  Serie(string name);
-  Serie();
+  Serie(string courseName);
+  Serie(string courseName, string name);
   ~Serie(){};
   void addExercise();
   int getId() {return ID;};
@@ -47,6 +48,7 @@ private:
   vector<string> tags;
   vector<string> notes;
   vector<Exercise *> exercises;
+  string courseName;
 };
 
 class CourseData {
