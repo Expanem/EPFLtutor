@@ -29,7 +29,7 @@ void CourseData::addSerie() {
 }
 
 Serie* CourseData::getSerie(string name) {
-  for (int i = 0; i < series.size; i++) {
+  for (int i = 0; i < series.size(); i++) {
     if (series[i]->getName() == name){
       return series[i];
     }
@@ -39,7 +39,7 @@ Serie* CourseData::getSerie(string name) {
 }
 
 Serie* CourseData::getSerie(int id) {
-  for (int i = 0; i < series.size; i++) {
+  for (int i = 0; i < series.size(); i++) {
     if (series[i]->getId() == id){
       return series[i];
     }
