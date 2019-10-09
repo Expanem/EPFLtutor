@@ -264,6 +264,19 @@ void Exercise::askData() {
 
 void Exercise::showData() {}
 
-void Exercise::yamlWrite() {}
+void Exercise::yamlWrite() {
+  ofstream flux(courseName + ".save");
+  flux << "id: " << id << endl
+       << "date: " << date << endl
+       << "time: " << time << endl
+       << "time_to_complete: " << timeToComplete << endl
+       << "mark: " << mark << endl;
+  flux << "tags: ";
+  for (size_t i = 0; tags.size(); i++){
+    flux << tags[i];
+  }
+  flux << endl;
+  flux.close();
+}
 
 void Exercise::yamlRead() {}
