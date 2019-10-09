@@ -1,6 +1,6 @@
 /*!
   \file   dataManager.cc
-  \brief  Import, save, and export all data.
+  \brief  Def, import, save, and export all data.
 */
 #include <fstream>
 #include <iostream>
@@ -25,10 +25,12 @@ CourseData::CourseData() {
 }
 
 void CourseData::addSerie() {
+  /** Create a new serie and add it to the course **/
   series.push_back(new Serie(name));
 }
 
 Serie* CourseData::getSerie(string name) {
+  /** Return a pointer to a Serie, given the name **/ 
   for (int i = 0; i < series.size(); i++) {
     if (series[i]->getName() == name){
       return series[i];
@@ -39,6 +41,7 @@ Serie* CourseData::getSerie(string name) {
 }
 
 Serie* CourseData::getSerie(int id) {
+  /** Return a pointer to a Serie, given the id **/ 
   for (int i = 0; i < series.size(); i++) {
     if (series[i]->getId() == id){
       return series[i];
@@ -49,6 +52,7 @@ Serie* CourseData::getSerie(int id) {
 }
 
 void CourseData::askData() {
+  /** Get data from the user for a course **/ 
   array<string, 5> weekDays;
   weekDays[0] = "monday";
   weekDays[1] = "tuesday";
@@ -103,6 +107,7 @@ void CourseData::askData() {
 }
 
 void CourseData::showData() {
+  /** Print in commandLines the course data **/
   array<string, 5> weekDays;
   weekDays[0] = "monday";
   weekDays[1] = "tuesday";
@@ -121,6 +126,7 @@ void CourseData::showData() {
 }
 
 void CourseData::yamlWrite() {
+  /** Write all course data in a YAML formated file **/
   ofstream file;
   file.open(name + ".save");
   file << "%YAML 1.2\n---\nCourse: " << name << endl
@@ -135,7 +141,9 @@ void CourseData::yamlWrite() {
   file.close();
 }
 
-void CourseData::yamlRead() {}
+void CourseData::yamlRead() {
+  /** Get course data from a YAML formated file **/
+}
 
 Serie::Serie(string courseName, string name) {
   /** Constructor to import an existing serie **/
@@ -151,10 +159,12 @@ Serie::Serie(string courseName) {
 }
 
 void Serie::addExercise() {
+  /** Create a new Exercise and add it to the serie **/
   exercises.push_back(new Exercise(courseName));
 }
 
 void Serie::askData() {
+  /** Get Serie data from the user **/ 
   cout << "Which number is this serie ?" << endl;
   cin >> ID;
   cout << "Do you want to add a specific name ? (just press enter to ignore)" << endl;
@@ -190,6 +200,7 @@ void Serie::askData() {
 }
 
 void Serie::showData() {
+  /** Print in commandLines the serie data **/
   cout << "id: " << ID << endl
        << "week: " << week << endl
        << "name: " << name << endl
@@ -208,6 +219,7 @@ void Serie::showData() {
 }
 
 void Serie::yamlWrite() {
+  /** Write all the serie data in a YAML formated file **/
   ofstream flux(courseName + ".save");
   flux << endl
        << "serie: " << ID << endl
@@ -232,9 +244,12 @@ void Serie::yamlWrite() {
   flux.close();
 }
 
-void Serie::yamlRead() {}
+void Serie::yamlRead() {
+  /** Get Serie data from a YAML formated file **/
+}
 
 void Serie::realTimeEx() {
+  /** Allow the user to exercise in real time **/
   clock_t t;
   vector<int> times;
   string action;
@@ -259,6 +274,7 @@ Exercise::Exercise(string courseName, string name) {
 }
 
 void Exercise::askData() {
+  /** Get exercise data from the user **/ 
   cout << "Please give an ID for the exercise (ex: 1.a.ii)." << endl;
   cin >> id;
   cout << "When did you do this exercise ? (ddmmyyyy)" << endl;
@@ -279,6 +295,7 @@ void Exercise::askData() {
 }
 
 void Exercise::showData() {
+  /** Print in commandLines the exercise data **/
   cout << "id: " << id << endl
        << "date: " << date << endl
        << "time: " << time << endl
@@ -293,6 +310,7 @@ void Exercise::showData() {
 }
 
 void Exercise::yamlWrite() {
+  /** Write all the exercise data in a YAML formated file **/
   ofstream flux(courseName + ".save");
   flux << "id: " << id << endl
        << "date: " << date << endl
@@ -307,4 +325,6 @@ void Exercise::yamlWrite() {
   flux.close();
 }
 
-void Exercise::yamlRead() {}
+void Exercise::yamlRead() {
+  /** Get exercise data from a YAML formated file **/
+}
