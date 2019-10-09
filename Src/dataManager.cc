@@ -123,11 +123,11 @@ void CourseData::showData() {
 void CourseData::yamlWrite() {
   ofstream file;
   file.open(name + ".save");
-  file << "%YAML 1.2\n---\nCourse : " << name << endl
-       << "description : " << description << endl
-       << "day : " << exerciseDay << endl
+  file << "%YAML 1.2\n---\nCourse: " << name << endl
+       << "description: " << description << endl
+       << "day: " << exerciseDay << endl
        << endl;
-  file << "user data : " << endl;
+  file << "user_data: " << endl;
   for (size_t i = 0; i < userContent.size(); i++) {
     file << "- " << userContent[i][0] << " : " << userContent[i][1] << endl;
   }
