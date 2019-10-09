@@ -149,8 +149,8 @@ Serie::Serie() {
   yamlWrite();
 }
 
-void Serie::addExercice() {
-  exercices.push_back(new exercice);
+void Serie::addExercise() {
+  exercises.push_back(new Exercise);
 }
 
 void Serie::askData() {}
@@ -171,3 +171,24 @@ void Serie::realTimeEx() {
     times.push_back(clock() - t);
   }
 }
+
+Exercise::Exercise() {
+  /** Constructor to create a new exercise **/
+  askData();
+  showData();
+  yamlWrite();
+}
+
+Exercise::Exercise(string name) {
+  /** Constructor to import an existing serie **/
+  yamlRead();
+  showData();
+}
+
+void Exercise::askData() {}
+
+void Exercise::showData() {}
+
+void Exercise::yamlWrite() {}
+
+void Exercise::yamlRead() {}

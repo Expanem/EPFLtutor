@@ -95,7 +95,7 @@ void create(int argc, char *argv[], int &argNb) {
   case TYPE_EXERCISE:
     cout << "Loading selected course" << endl;
     course = new CourseData(string(argv[argNb + 1]));
-    course->getSerie(argv[argNb + 3])->addExercice();
+    course->getSerie(argv[argNb + 3])->addExercise();
     break;
   default: 
     cout << "ERROR, wrong TYPE" << endl;
