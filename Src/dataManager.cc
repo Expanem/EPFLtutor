@@ -189,7 +189,23 @@ void Serie::askData() {
   }
 }
 
-void Serie::showData() {}
+void Serie::showData() {
+  cout << "id: " << ID << endl
+       << "week: " << week << endl
+       << "name: " << name << endl
+       << "structure: " << structure << endl
+       << "related: " << related << endl
+       << "tags: ";
+   for (size_t i = 0 ; i < tags.size(); i++){
+     cout << tags[i] << " ";
+   }
+   cout << endl;
+   cout << "notes: ";
+   for (size_t i = 0 ; i < notes.size(); i++){
+     cout << notes[i] << " ";
+   }
+   cout << endl;
+}
 
 void Serie::yamlWrite() {
   ofstream flux(courseName + ".save");
@@ -262,7 +278,19 @@ void Exercise::askData() {
   }
 }
 
-void Exercise::showData() {}
+void Exercise::showData() {
+  cout << "id: " << id << endl
+       << "date: " << date << endl
+       << "time: " << time << endl
+       << "timeToComplete: " << timeToComplete << endl
+       << "mark: " << mark << endl
+       << "tags";
+  for (size_t i = 0; i < tags.size(); i++){
+    cout << tags[i] << " ";
+  }
+  cout << endl;
+
+}
 
 void Exercise::yamlWrite() {
   ofstream flux(courseName + ".save");
