@@ -43,13 +43,13 @@ void ConfigData::importConfig() {
   string inputData;
   while(flux >> inputData) {
     if (inputData == "online_mode:") {
-      bool(flux) >> onlineMode;
+      flux >> onlineMode;
     } else if (inputData == "save_format:") {
       flux >> saveFormat;
     } else if (inputData == "language:") {
       flux >> language;
     } else if (inputData == "neophyte_mode:") {
-      flux >> language;
+      flux >> neophyteMode;
     } else {
       cout << "Wrong save format, please delete the .conf." << endl;
       exit(0);
