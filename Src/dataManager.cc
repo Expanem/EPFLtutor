@@ -208,9 +208,10 @@ void Serie::yamlWrite() {
   for (size_t i = 0; notes.size(); i++){
     flux << notes[i];
   }
+  /*
   for (size_t i = 0; exercises.size(); i++){
     exercises[i]->yamlWrite();
-  }
+  } */
   flux << endl;
   flux.close();
 }
