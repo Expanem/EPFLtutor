@@ -219,7 +219,25 @@ Exercise::Exercise(string name) {
   showData();
 }
 
-void Exercise::askData() {}
+void Exercise::askData() {
+  cout << "Please give an ID for the exercise (ex: 1.a.ii)." << endl;
+  cin >> id;
+  cout << "When did you do this exercise ? (ddmmyyyy)" << endl;
+  cin >> date;
+  cout << "What time of the day ? (hhmmss, 24h format)" << endl;
+  cin >> time;
+  cout << "How much time did you need to complete it ?" << endl;
+  cin >> timeToComplete;
+  cout << "Give yourself a mark, 2 the best, 0 the worst." << endl;
+  cin >> mark;
+  cout << "Would you like to add tags ? (leave blank when you are done)" << endl;
+  string inputTmp;
+  cin >> inputTmp;
+  while (inputTmp != "") {
+    tags.push_back(inputTmp);
+    cin >> inputTmp;
+  }
+}
 
 void Exercise::showData() {}
 
