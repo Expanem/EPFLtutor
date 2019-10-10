@@ -9,22 +9,22 @@
 
 using namespace std;
 
-float average(CourseData course) {
+float markAverage(CourseData course) {
   /** Return the average of a course **/
   int sum = 0;
-  for (size_t i = 0; i < course.getSerie().size()) {
+  for (size_t i = 0; i < course.getSerie().size(); i++) {
     sum += average(course.getSerie()[i]);
   }
   return sum /= course.getSerie().size();
 }
 
-float average(Serie* serie) {
+float markAverage(Serie* serie) {
   /** Return the average of a serie' marks **/
   int sum = 0;
-  for (size_t i = 0; i < serie->getExercises().size()) {
+  for (size_t i = 0; i < serie->getExercises().size(); i++) {
     sum += serie->getExercises()[i]->getMark();
   }
-  return sum /= serie->getExercises().size();
+  return 1 + (sum /= serie->getExercises().size()) * 5;
 }
 
 float average(vector<float> numbers) {
