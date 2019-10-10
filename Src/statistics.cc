@@ -35,3 +35,33 @@ float average(vector<float> numbers) {
   }
   return sum / numbers.size();
 }
+
+float* timeOfTheDayDistribution(CourseData course) {
+  vector<Serie *> series;
+  for (size_t i = 0; i < course.getSeries().size(); i++) {
+    series.push_back(course.getSeries()[i]);
+  }
+  return timeOfTheDayDistribution(series);
+}
+
+float* timeOfTheDayDistribution(vector<Serie *> serie) {
+  vector<Exercise *> exercises;
+  for (size_t j = 0; j < serie.size(); j++){
+    for (size_t i = 0; i < serie.getExercises().size(); i++) {
+      exercises.push_back(serie.getExercises()[i]);
+    }
+  }
+  return timeOfTheDayDistribution(exercises);
+}
+
+float* timeOfTheDayDistribution(vector<Exercise *> exercises) {
+  /** Return from a list of exercises the distribution of time of the day in a array **/
+  float* dayTimeDist[24];
+  for (size_t i = 0; i < exercises.size(); i++) {
+    dayTimeDist[exercises[i]->getHour()] += 1;
+  }
+  for (unsigned short i = 0; i < 24; i++) {
+    dayTimeDist[i] /= exercises.size();
+  }
+  return dayTimeDist;
+}
