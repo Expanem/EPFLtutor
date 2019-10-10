@@ -95,3 +95,32 @@ float* dayOfTheWeekDistribution(vector<Exercise *> exercises) {
   }
   return weekDay;
 }
+
+float averageTimeSpentEx(CourseData course) {
+  /** Return average time spent on exercise from a course **/
+  int sum = 0;
+  for (size_t i = 0; i < course.getSerie().size(); i++) {
+    sum += averageTimeSpent(course.getSerie()[i]);
+  }
+  return sum /= course.getSerie().size();
+}
+
+float averageTimeSpentEx(Serie* serie) {
+  /** Return average time spent on exercises from a serie **/
+  int sum = 0;
+  for (size_t i = 0; i < serie->getExercises().size(); i++) {
+    sum += serie->getExercises()[i]->getTime();
+  }
+  return sum /= serie->getExercises().size();
+}
+
+float averageTimeSpentS(CourseData course) {
+  /** Return average time spent on series from a course **/
+  int sum = 0;
+  for (size_t i = 0; i < course.getSerie().size(); i++) {
+    for (size_t j = 0; j < course.getSerie()->getExercises().size(); j++) {
+      sum += course.getSerie()[i]->getExercises()[j]->getTime();
+    }
+  }
+  return sum /= course.getSerie().size();
+}
