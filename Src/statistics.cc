@@ -65,3 +65,33 @@ float* timeOfTheDayDistribution(vector<Exercise *> exercises) {
   }
   return dayTimeDist;
 }
+
+float* dayOfTheWeekDistribution(CourseData course) {
+  vector<Serie *> series;
+  for (size_t i = 0; i < course.getSeries().size(); i++) {
+    series.push_back(course.getSeries()[i]);
+  }
+  return dayOfTheWeekDistribution(series);
+}
+
+float* dayOfTheWeekDistribution(vector<Serie *> serie) {
+  vector<Exercise *> exercises;
+  for (size_t j = 0; j < serie.size(); j++){
+    for (size_t i = 0; i < serie.getExercises().size(); i++) {
+      exercises.push_back(serie.getExercises()[i]);
+    }
+  }
+  return dayOfTheWeekDistribution(exercises);
+}
+
+float* dayOfTheWeekDistribution(vector<Exercise *> exercises) {
+  /** Return from a list of exercises the distribution of week day in a array **/
+  float* weekDay[7];
+  for (size_t i = 0; i < exercises.size(); i++) {
+    weekDay[exercises[i]->getDayW()] += 1;
+  }
+  for (unsigned short i = 0; i < 7; i++) {
+    weekDay[i] /= exercises.size();
+  }
+  return weekDay;
+}
