@@ -29,7 +29,7 @@ void stats(int argc, char *argv[], int &argNb);
 int edit(int argc, char *argv[], int &argNb);
 void help();
 
-void parseTypeArg(int argc, char *argv[], int &argNb, int &type, dataAdress &adress);
+void parseTypeArg(int argc, char *argv[], int argNb, int &type, dataAdress &adress);
 
 static ConfigData configuration;
 
@@ -87,8 +87,15 @@ void create(int argc, char *argv[], int &argNb) {
     course = new CourseData();
     break;
   case TYPE_SERIE:
+    cout << "Loading selected course" << endl;
+    course = new CourseData(string(argv[argNb + 1]));
+    cout << "Creating new serie" << endl;
+    course->addSerie();
     break;
   case TYPE_EXERCISE:
+    cout << "Loading selected course" << endl;
+    course = new CourseData(string(argv[argNb + 1]));
+    course->getSerie(argv[argNb + 3])->addExercise();
     break;
   default: 
     cout << "ERROR, wrong TYPE" << endl;
@@ -178,7 +185,7 @@ void help() {
   exit(0);
 }
 
-void parseTypeArg(int argc, char *argv[], int &argNb, int &type, dataAdress &adress) {
+void parseTypeArg(int argc, char *argv[], int argNb, int &type, dataAdress &adress) {
   while (argNb < argc ) {
     if (string(argv[argNb]) == "--help") {
       argNb++;
