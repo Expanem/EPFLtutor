@@ -273,6 +273,16 @@ Exercise::Exercise(string courseName, string name) {
   showData();
 }
 
+int Exercise::getHour() {
+  cout << "Please code getHour" << endl;
+  exit(1);
+}
+
+int Exercise::getDayW() {
+  cout << "Please code getDayW" << endl;
+  exit(1);
+}
+
 void Exercise::askData() {
   /** Get exercise data from the user **/ 
   cout << "Please give an ID for the exercise (ex: 1.a.ii)." << endl;
