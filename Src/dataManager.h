@@ -2,6 +2,10 @@
   \file   dataManager.h
   \brief  Import, save, and export all data.
 */
+
+#ifndef DATAMANAGER_H
+#define DATAMANAGER_H
+
 #include <array>
 #include <vector>
 
@@ -80,3 +84,5 @@ private:
   vector<array<string, 2>> userContent;
   vector<Serie *> series;
 };
+
+#endif
