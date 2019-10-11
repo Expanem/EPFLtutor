@@ -21,17 +21,17 @@ vector<float> markAverage(vector<CourseData *> courses) {
 float markAverage(CourseData* course) {
   /** Return the average of a course **/
   int sum = 0;
-  for (size_t i = 0; i < course->getSerie().size(); i++) {
-    sum += average(course->getSerie()[i]);
+  for (size_t i = 0; i < course->getSeries().size(); i++) {
+    sum += markAverage(course->getSerie(i));
   }
-  return sum /= course->getSerie().size();
+  return sum /= course->getSeries().size();
 }
 
 float markAverage(Serie* serie) {
   /** Return the average of a serie' marks **/
   int sum = 0;
   for (size_t i = 0; i < serie->getExercises().size(); i++) {
-    sum += serie->getExercises()[i]->getMark();
+    sum += serie->getExercise(i)->getMark();
   }
   return 1 + (sum /= serie->getExercises().size()) * 5;
 }
@@ -62,11 +62,11 @@ float* timeOfTheDayDistribution(CourseData* course) {
   return timeOfTheDayDistribution(series);
 }
 
-float* timeOfTheDayDistribution(vector<Serie *> serie) {
+float* timeOfTheDayDistribution(vector<Serie *> series) {
   vector<Exercise *> exercises;
-  for (size_t j = 0; j < serie.size(); j++){
-    for (size_t i = 0; i < serie.getExercises().size(); i++) {
-      exercises.push_back(serie.getExercises()[i]);
+  for (size_t j = 0; j < series.size(); j++){
+    for (size_t i = 0; i < series[0]->getExercises().size(); i++) {
+      exercises.push_back(series[j]->getExercise(i));
     }
   }
   return timeOfTheDayDistribution(exercises);
@@ -74,7 +74,7 @@ float* timeOfTheDayDistribution(vector<Serie *> serie) {
 
 float* timeOfTheDayDistribution(vector<Exercise *> exercises) {
   /** Return from a list of exercises the distribution of time of the day in a array **/
-  float* dayTimeDist[24];
+  float dayTimeDist[24];
   for (size_t i = 0; i < exercises.size(); i++) {
     dayTimeDist[exercises[i]->getHour()] += 1;
   }
@@ -101,11 +101,11 @@ float* dayOfTheWeekDistribution(CourseData* course) {
   return dayOfTheWeekDistribution(series);
 }
 
-float* dayOfTheWeekDistribution(vector<Serie *> serie) {
+float* dayOfTheWeekDistribution(vector<Serie *> series) {
   vector<Exercise *> exercises;
-  for (size_t j = 0; j < serie.size(); j++){
-    for (size_t i = 0; i < serie.getExercises().size(); i++) {
-      exercises.push_back(serie.getExercises()[i]);
+  for (size_t j = 0; j < series.size(); j++){
+    for (size_t i = 0; i < series[0]->getExercises().size(); i++) {
+      exercises.push_back(series[j]->getExercises()[i]);
     }
   }
   return dayOfTheWeekDistribution(exercises);
@@ -113,7 +113,7 @@ float* dayOfTheWeekDistribution(vector<Serie *> serie) {
 
 float* dayOfTheWeekDistribution(vector<Exercise *> exercises) {
   /** Return from a list of exercises the distribution of week day in a array **/
-  float* weekDay[7];
+  float weekDay[7];
   for (size_t i = 0; i < exercises.size(); i++) {
     weekDay[exercises[i]->getDayW()] += 1;
   }
@@ -135,17 +135,17 @@ vector<float> averageTimeSpentEx(vector<CourseData *> courses) {
 float averageTimeSpentEx(CourseData* course) {
   /** Return average time spent on exercise from a course **/
   int sum = 0;
-  for (size_t i = 0; i < course->getSerie().size(); i++) {
-    sum += averageTimeSpentEx(course->getSerie()[i]);
+  for (size_t i = 0; i < course->getSeries().size(); i++) {
+    sum += averageTimeSpentEx(course->getSerie(i));
   }
-  return sum /= course->getSerie().size();
+  return sum /= course->getSeries().size();
 }
 
 float averageTimeSpentEx(Serie* serie) {
   /** Return average time spent on exercises from a serie **/
   int sum = 0;
   for (size_t i = 0; i < serie->getExercises().size(); i++) {
-    sum += serie->getExercises()[i]->getTime();
+    sum += serie->getExercise(i)->getTimeToComplete();
   }
   return sum /= serie->getExercises().size();
 }
@@ -162,10 +162,10 @@ vector<float> averageTimeSpentS(vector<CourseData *> courses) {
 float averageTimeSpentS(CourseData* course) {
   /** Return average time spent on series from a course **/
   int sum = 0;
-  for (size_t i = 0; i < course->getSerie().size(); i++) {
-    for (size_t j = 0; j < course->getSerie()->getExercises().size(); j++) {
-      sum += course->getSerie()[i]->getExercises()[j]->getTime();
+  for (size_t i = 0; i < course->getSeries().size(); i++) {
+    for (size_t j = 0; j < course->getSerie(j)->getExercises().size(); j++) {
+      sum += course->getSerie(i)->getExercise(j)->getTimeToComplete();
     }
   }
-  return sum /= course->getSerie().size();
+  return sum /= course->getSeries().size();
 }
