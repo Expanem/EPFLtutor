@@ -3,6 +3,8 @@
   \brief  Create, Load and modify global configuration.
 */
 
+#include <string>
+
 void config(int argc, char *argv[], int &argNb);
 
 class ConfigData {
