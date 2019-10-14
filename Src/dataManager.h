@@ -64,6 +64,7 @@ public:
   void showData();
   Serie* getSerie(string name);
   Serie* getSerie(int id);
+  vector<Serie *> getSeries() {return series;};
 
 private:
   void askData();
