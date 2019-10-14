@@ -1,5 +1,5 @@
 CC     = g++
-CFLAGS = -g -std=c++11
+CFLAGS = -g -std=c++17
 OFILES = main.o configuration.o dataManager.o
 
 EPFLtutor: $(OFILES)
