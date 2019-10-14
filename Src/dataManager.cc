@@ -6,10 +6,13 @@
 #include <iostream>
 #include <string>
 #include <time.h>
+#include <filesystem>
+
 
 #include "dataManager.h"
 
 using namespace std;
+namespace fs = std::filesystem;
 
 CourseData::CourseData(string name) {
   /** Constructor to import an existing course **/
@@ -338,4 +341,14 @@ void Exercise::yamlWrite() {
 
 void Exercise::yamlRead() {
   /** Get exercise data from a YAML formated file **/
+}
+
+vector<string> getSavedCourseNames(string path) {
+  vector<string> courses;
+  for (const auto & entry : fs::directory_iterator(path)) {
+    if (entry.path().extension() == ".save"){
+      courses.push_back(string(entry.path().stem()));       
+    }
+  }
+  return courses;
 }

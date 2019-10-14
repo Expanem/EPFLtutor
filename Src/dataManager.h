@@ -76,3 +76,5 @@ private:
   vector<array<string, 2>> userContent;
   vector<Serie *> series;
 };
+
+vector<string> getSavedCourseNames(string path = "./");
