@@ -163,6 +163,17 @@ void Serie::addExercise() {
   exercises.push_back(new Exercise(courseName));
 }
 
+Exercise* Serie::getExercise(string name) {
+  /** Return a pointer to a Serie, given the name **/ 
+  for (int i = 0; i < exercises.size(); i++) {
+    if (exercises[i]->getID() == name){
+      return exercises[i];
+    }
+  }
+  cout << "Wrong exercise name, please check informations you entered" << endl;
+  exit(1);
+}
+
 void Serie::askData() {
   /** Get Serie data from the user **/ 
   cout << "Which number is this serie ?" << endl;
