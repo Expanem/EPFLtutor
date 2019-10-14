@@ -124,12 +124,32 @@ void list(int argc, char *argv[], int &argNb) {
     cout << endl;
     exit(0);
   } else if (string(argv[argNb]) == "-serie") {
-    // Call read function to parse data
-    // Cout list
+    vector<string> courses = getSavedCourseNames();
+    vector<CourseData *> coursesData;
+    for (int i = 0; i < courses.size(); i++) {
+      coursesData.push_back(new CourseData(courses[i]));
+      cout << courses[i] << " ";
+      for (int j = 0; j < coursesData[i]->getSeries().size(); j++) {
+        cout << coursesData[i]->getSerie(j)->getId() << "/" << coursesData[i]->getSerie(j)->getName() << " ";
+      }
+      cout << endl;
+    }
     exit(0);
   } else if (string(argv[argNb]) == "-exercise") {
-    // Call read function to parse data
-    // Cout list
+    vector<string> courses = getSavedCourseNames();
+    vector<CourseData *> coursesData;
+    for (int i = 0; i < courses.size(); i++) {
+      coursesData.push_back(new CourseData(courses[i]));
+      cout << courses[i] << " ";
+      for (int j = 0; j < coursesData[i]->getSeries().size(); j++) {
+        cout << coursesData[i]->getSerie(j)->getId() << "/" << coursesData[i]->getSerie(j)->getName() << ": ";
+        for (int k = 0; k < coursesData[i]->getSerie(j)->getExercises().size(); k++) {
+          cout << coursesData[i]->getSerie(j)->getExercise(k)->getID() << ": ";
+        }
+        cout << endl;
+      }
+      cout << endl;
+    }
     exit(0);
   }
 }
