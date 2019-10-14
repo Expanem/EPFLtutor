@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <string>
+#include <filesystem>
 
 #include "configuration.h"
 #include "dataManager.h"
@@ -15,6 +16,7 @@
 #define TYPE_EXERCISE 3
 
 using namespace std;
+namespace fs = std::filesystem;
 
 typedef struct dataAdress {
   string subject;
@@ -116,8 +118,14 @@ void list(int argc, char *argv[], int &argNb) {
     cout << "This is specific help" << endl;
     exit(0);
   } if (string(argv[argNb]) == "-subject") {
-    // Call read function to parse subject names
-    // Cout list
+    cout << "Courses: ";
+    string path = "./";
+    for (const auto & entry : fs::directory_iterator(path)) {
+      if (entry.path().extension() == ".save"){
+        cout << string(entry.path().stem()) << " ";        
+      }
+    }
+    cout << endl;
     exit(0);
   } else if (string(argv[argNb]) == "-serie") {
     // Call read function to parse data
