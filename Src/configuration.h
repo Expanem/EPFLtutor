@@ -3,6 +3,11 @@
   \brief  Create, Load and modify global configuration.
 */
 
+#ifndef CONFIGURATION_H
+#define CONFIGURATION_H
+
+#include <string>
+
 void config(int argc, char *argv[], int &argNb);
 
 class ConfigData {
@@ -18,3 +23,5 @@ class ConfigData {
     std::string saveFormat;
     std::string language;
 };
+
+#endif

@@ -2,6 +2,10 @@
   \file   dataManager.h
   \brief  Import, save, and export all data.
 */
+
+#ifndef DATAMANAGER_H
+#define DATAMANAGER_H
+
 #include <array>
 #include <vector>
 
@@ -12,6 +16,10 @@ class Exercise {
     Exercise(string courseName);
     Exercise(string courseName, string name);
     ~Exercise();
+    int getMark() {return mark;};
+    int getTimeToComplete() {return time;};
+    int getHour();
+    int getDayW();
   private:
     void askData();
     void showData();
@@ -34,6 +42,9 @@ public:
   void addExercise();
   int getId() {return ID;};
   string getName() {return name;};
+  vector<Exercise *> getExercises() {return exercises;};
+  Exercise* getExercise(int id) {return exercises[id];};
+
 private:
   void askData();
   void showData();
@@ -59,6 +70,7 @@ public:
   void addSerie();
   Serie* getSerie(string name);
   Serie* getSerie(int id);
+  vector<Serie *> getSeries() {return series;};
 
 private:
   void askData();
@@ -72,3 +84,5 @@ private:
   vector<array<string, 2>> userContent;
   vector<Serie *> series;
 };
+
+#endif
