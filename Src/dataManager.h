@@ -2,6 +2,10 @@
   \file   dataManager.h
   \brief  Import, save, and export all data.
 */
+
+#ifndef DATAMANAGER_H
+#define DATAMANAGER_H
+
 #include <array>
 #include <vector>
 
@@ -14,6 +18,10 @@ class Exercise {
     ~Exercise();
     void showData();
     string getID() {return id;};
+    int getMark() {return mark;};
+    int getTimeToComplete() {return time;};
+    int getHour();
+    int getDayW();
   private:
     void askData();
     void yamlWrite();
@@ -79,3 +87,5 @@ private:
 };
 
 vector<string> getSavedCourseNames(string path = "./");
+
+#endif
