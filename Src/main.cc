@@ -225,7 +225,7 @@ void stats(int argc, char *argv[], int &argNb){
 void help() {
   cout << "EPFLtutor 0.0.1" << endl
        << "This is free software: you are free to change and redistribute it, just name the main authors." << endl
-       << "See: https://github.com/Goneiross/EPFLtutor for more informations and tutorials." << endl << endl;
+       << "See: https://github.com/Expanem/EPFLtutor for more informations and tutorials." << endl << endl;
   cout << "Commands:" << endl
        << "-h,  --help                show the help" << endl
        << "-l,  --list                " << endl
