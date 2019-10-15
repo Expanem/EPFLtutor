@@ -6,10 +6,13 @@
 #include <iostream>
 #include <string>
 #include <time.h>
+#include <filesystem>
+
 
 #include "dataManager.h"
 
 using namespace std;
+namespace fs = std::filesystem;
 
 CourseData::CourseData(string name) {
   /** Constructor to import an existing course **/
@@ -161,6 +164,17 @@ Serie::Serie(string courseName) {
 void Serie::addExercise() {
   /** Create a new Exercise and add it to the serie **/
   exercises.push_back(new Exercise(courseName));
+}
+
+Exercise* Serie::getExercise(string name) {
+  /** Return a pointer to a Serie, given the name **/ 
+  for (int i = 0; i < exercises.size(); i++) {
+    if (exercises[i]->getID() == name){
+      return exercises[i];
+    }
+  }
+  cout << "Wrong exercise name, please check informations you entered" << endl;
+  exit(1);
 }
 
 void Serie::askData() {
@@ -337,4 +351,14 @@ void Exercise::yamlWrite() {
 
 void Exercise::yamlRead() {
   /** Get exercise data from a YAML formated file **/
+}
+
+vector<string> getSavedCourseNames(string path) {
+  vector<string> courses;
+  for (const auto & entry : fs::directory_iterator(path)) {
+    if (entry.path().extension() == ".save"){
+      courses.push_back(string(entry.path().stem()));       
+    }
+  }
+  return courses;
 }

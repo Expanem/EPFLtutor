@@ -1,6 +1,6 @@
 CC     = g++
-CFLAGS = -g -std=c++11
-OFILES = main.o configuration.o dataManager.o statistics.o
+CFLAGS = -g -std=c++17
+OFILES = main.o configuration.o dataManager.o
 
 EPFLtutor: $(OFILES)
 	$(CC) $(OFILES) -o $@

@@ -16,13 +16,14 @@ class Exercise {
     Exercise(string courseName);
     Exercise(string courseName, string name);
     ~Exercise();
+    void showData();
+    string getID() {return id;};
     int getMark() {return mark;};
     int getTimeToComplete() {return time;};
     int getHour();
     int getDayW();
   private:
     void askData();
-    void showData();
     void yamlWrite();
     void yamlRead();
     string id;
@@ -40,14 +41,14 @@ public:
   Serie(string courseName, string name);
   ~Serie(){};
   void addExercise();
+  void showData();
   int getId() {return ID;};
   string getName() {return name;};
-  vector<Exercise *> getExercises() {return exercises;};
-  Exercise* getExercise(int id) {return exercises[id];};
-
+  vector<Exercise*> getExercises() {return exercises;};
+  Exercise* getExercise(int number) {return exercises[number];};
+  Exercise* getExercise(string name);
 private:
   void askData();
-  void showData();
   void yamlWrite();
   void yamlRead();
   void realTimeEx();
@@ -68,13 +69,13 @@ public:
   CourseData(string name);
   ~CourseData(){};
   void addSerie();
+  void showData();
   Serie* getSerie(string name);
   Serie* getSerie(int id);
   vector<Serie *> getSeries() {return series;};
 
 private:
   void askData();
-  void showData();
   void yamlWrite();
   void yamlRead();
   string name;
@@ -84,5 +85,7 @@ private:
   vector<array<string, 2>> userContent;
   vector<Serie *> series;
 };
+
+vector<string> getSavedCourseNames(string path = "./");
 
 #endif

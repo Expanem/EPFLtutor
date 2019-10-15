@@ -116,21 +116,45 @@ void list(int argc, char *argv[], int &argNb) {
     cout << "This is specific help" << endl;
     exit(0);
   } if (string(argv[argNb]) == "-subject") {
-    // Call read function to parse subject names
-    // Cout list
+    cout << "Courses: ";
+    vector<string> courses = getSavedCourseNames();
+    for (int i = 0; i < courses.size(); i++) {
+      cout << courses[i] << " ";
+    }
+    cout << endl;
     exit(0);
   } else if (string(argv[argNb]) == "-serie") {
-    // Call read function to parse data
-    // Cout list
+    vector<string> courses = getSavedCourseNames();
+    vector<CourseData *> coursesData;
+    for (int i = 0; i < courses.size(); i++) {
+      coursesData.push_back(new CourseData(courses[i]));
+      cout << courses[i] << " ";
+      for (int j = 0; j < coursesData[i]->getSeries().size(); j++) {
+        cout << coursesData[i]->getSerie(j)->getId() << "/" << coursesData[i]->getSerie(j)->getName() << " ";
+      }
+      cout << endl;
+    }
     exit(0);
   } else if (string(argv[argNb]) == "-exercise") {
-    // Call read function to parse data
-    // Cout list
+    vector<string> courses = getSavedCourseNames();
+    vector<CourseData *> coursesData;
+    for (int i = 0; i < courses.size(); i++) {
+      coursesData.push_back(new CourseData(courses[i]));
+      cout << courses[i] << " ";
+      for (int j = 0; j < coursesData[i]->getSeries().size(); j++) {
+        cout << coursesData[i]->getSerie(j)->getId() << "/" << coursesData[i]->getSerie(j)->getName() << ": ";
+        for (int k = 0; k < coursesData[i]->getSerie(j)->getExercises().size(); k++) {
+          cout << coursesData[i]->getSerie(j)->getExercise(k)->getID() << ": ";
+        }
+        cout << endl;
+      }
+      cout << endl;
+    }
     exit(0);
   }
 }
 
-void show(int argc, char *argv[], int &argNb) {
+void show(int argc, char *argv[], int &argNb) { // if no id given ?
     argNb++;
   if ( argNb >= argc){
     cout << "Please, provide an argument to tell which information you want." << endl
@@ -139,12 +163,48 @@ void show(int argc, char *argv[], int &argNb) {
   }
   int type;
   dataAdress adress;
+  CourseData* course;
   cout << "Showing:";
   parseTypeArg(argc, argv, argNb, type, adress);
   cout << endl;
-  if (type == TYPE_SPECIFIC_HELP) {
+  switch (type)
+  {
+  case TYPE_SPECIFIC_HELP:
     cout << "This is specific help" << endl;
     exit(0);
+    break;
+  case TYPE_SUBJECT:
+    cout << "Loading selected course" << endl;
+    course = new CourseData(string(argv[argNb + 1]));
+    cout << "Showing course info:" << endl;
+    course->showData();
+    break;
+  case TYPE_SERIE:
+    cout << "Loading selected course" << endl;
+    course = new CourseData(string(argv[argNb + 1]));
+    cout << "Loading serie and showing data:" << endl;
+    try { //Check this part
+      course->getSerie(stoi(adress.serie))->showData();
+    }  
+    catch(const std::exception& e) {
+      course->getSerie(adress.serie)->showData();
+    }
+    
+    break;
+  case TYPE_EXERCISE:
+    cout << "Loading selected course" << endl;
+    course = new CourseData(string(argv[argNb + 1]));
+    cout << "Loading serie and showing data:" << endl;
+    try { //Check this part //And if int then string or string then int ?
+      course->getSerie(stoi(adress.serie))->getExercise(stoi(adress.exercise))->showData();
+    }  
+    catch(const std::exception& e) {
+      course->getSerie(adress.serie)->getExercise(adress.exercise)->showData();
+    }
+    break;
+  default: 
+    cout << "ERROR, wrong TYPE" << endl;
+    break;
   }
   // Get other arguments, for example which info : -all, -marks, -tags, ...
   exit(0);
