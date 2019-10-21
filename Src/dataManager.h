@@ -22,6 +22,7 @@ class Exercise {
     int getTimeToComplete() {return time;};
     int getHour();
     int getDayW();
+    void edit();
   private:
     void askData();
     void yamlWrite();
@@ -47,6 +48,7 @@ public:
   vector<Exercise*> getExercises() {return exercises;};
   Exercise* getExercise(int number) {return exercises[number];};
   Exercise* getExercise(string name);
+  void edit();
 private:
   void askData();
   void yamlWrite();
@@ -73,7 +75,7 @@ public:
   Serie* getSerie(string name);
   Serie* getSerie(int id);
   vector<Serie *> getSeries() {return series;};
-
+  void edit();
 private:
   void askData();
   void yamlWrite();

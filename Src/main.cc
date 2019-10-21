@@ -26,7 +26,7 @@ void create(int argc, char *argv[], int &argNb);
 void list(int argc, char *argv[], int &argNb);
 void show(int argc, char *argv[], int &argNb);
 void stats(int argc, char *argv[], int &argNb);
-int edit(int argc, char *argv[], int &argNb);
+void edit(int argc, char *argv[], int &argNb);
 void help();
 
 void parseTypeArg(int argc, char *argv[], int argNb, int &type, dataAdress &adress);
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
           } else if (string(argv[argNb]) == "-s" or string(argv[argNb]) == "--stats") {
             stats(argc, argv, argNb);
           } else if (string(argv[argNb]) == "-e" or string(argv[argNb]) == "--edit") {
-            // Call list functions
+            edit(argc, argv, argNb);
           } else if (string(argv[argNb]) == "--config") {
             configuration.config(argc, argv, argNb);
           } else {
@@ -219,6 +219,48 @@ void stats(int argc, char *argv[], int &argNb){
     }
   }
   // To do later
+  exit(0);
+}
+
+void edit(int argc, char *argv[], int &argNb) {
+  argNb++;
+  if (argNb >= argc) {
+    cout << "Please, provide an argument to tell what you want to edit." << endl
+         << "For example, -subject to edit a subject." << endl
+         << "For more informations, type --help" << endl;
+    exit(0);
+  }
+  bool realTime = false;
+  int type = -1;
+  dataAdress adress;
+  parseTypeArg(argc, argv, argNb, type, adress);
+  cout << endl;
+  cout << type << endl;
+  CourseData* course;
+  switch (type)
+  {
+  case TYPE_SPECIFIC_HELP:
+    cout << "This is specific help" << endl;
+    break;
+  case TYPE_SUBJECT:
+    cout << "Loading selected course" << endl;
+    course = new CourseData(string(argv[argNb + 1]));
+    course->edit();
+    break;
+  case TYPE_SERIE:
+    cout << "Loading selected course" << endl;
+    course = new CourseData(string(argv[argNb + 1]));
+    course->getSerie(argv[argNb + 3])->edit();
+    break;
+  case TYPE_EXERCISE:
+    cout << "Loading selected course" << endl;
+    course = new CourseData(string(argv[argNb + 1]));
+    course->getSerie(argv[argNb + 3])->getExercise(argv[argNb + 5])->edit();
+    break;
+  default: 
+    cout << "ERROR, wrong TYPE" << endl;
+    break;
+  }
   exit(0);
 }
 
