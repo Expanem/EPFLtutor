@@ -145,11 +145,30 @@ void CourseData::yamlWrite() {
 }
 
 void CourseData::yamlRead() {
-  /** Get course data from a YAML formated file **/
+  fstream file;
+  string filename = name + ".save";
+  file.open(filename,ios::in);
+  if(!(file.is_open())) {
+    cout<<"error : can't open Course file"<<endl;
+    exit(0);
+    }
+  else { 
+    string temp; 
+    string fileFormat;
+    for (size_t i = 0; i < 3; i++)
+    {
+      cin>>temp;
+      fileFormat = fileFormat + temp;
+    }
+    if(fileFormat != "%YAML 1.2 ---") {
+      cout<<"error : wrong file format for "<< filename << endl;
+      exit(0);
+    }
+  }
 }
 
 void CourseData::edit() {
-  // TO DO
+  yamlRead();
 }
 
 Serie::Serie(string courseName, string name) {
