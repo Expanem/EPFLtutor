@@ -148,6 +148,10 @@ void CourseData::yamlRead() {
   /** Get course data from a YAML formated file **/
 }
 
+void CourseData::edit() {
+  // TO DO
+}
+
 Serie::Serie(string courseName, string name) {
   /** Constructor to import an existing serie **/
   yamlRead();
@@ -274,6 +278,10 @@ void Serie::realTimeEx() {
   }
 }
 
+void Serie::edit() {
+  // TO DO
+}
+
 Exercise::Exercise(string courseName) {
   /** Constructor to create a new exercise **/
   askData();
@@ -361,4 +369,8 @@ vector<string> getSavedCourseNames(string path) {
     }
   }
   return courses;
+}
+
+void Exercise::edit() {
+  // TO DO
 }
