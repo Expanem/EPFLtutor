@@ -14,7 +14,8 @@
 using namespace std;
 namespace fs = std::filesystem;
 
-CourseData::CourseData(string name) {
+CourseData::CourseData(string courseName) :
+  name(courseName) {
   /** Constructor to import an existing course **/
   yamlRead();
   showData();
