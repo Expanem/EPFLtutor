@@ -69,6 +69,7 @@ void CourseData::askData() {
 
   cout << "What is the course description ?" << endl;
   getline(cin, description);
+  if(description == ""){description = "-";}
 
   do {
     cout << "On which day the exercices take place ?" << endl;
@@ -151,19 +152,34 @@ void CourseData::yamlRead() {
   file.open(filename,ios::in);
   if(!(file.is_open())) {
     cout<<"error : can't open Course file"<<endl;
-    exit(0);
+    exit(-1);
     }
   else { 
     string temp; 
     string fileFormat;
     for (size_t i = 0; i < 3; i++)
     {
-      cin>>temp;
+      file>>temp;
       fileFormat = fileFormat + temp;
     }
-    if(fileFormat != "%YAML 1.2 ---") {
-      cout<<"error : wrong file format for "<< filename << endl;
-      exit(0);
+    if(fileFormat != "%YAML1.2---") {
+      cout<<"error : wrong file format for "<< filename << ". header : " << fileFormat << endl;
+      exit(-1);
+    }else{
+      do{
+        file>>temp;
+        if(temp=="Course:"){
+          file>>temp;
+          if(temp != name){cout << "Incoherence in course name " << temp << " and " << name << endl; exit(-1);}
+
+        }else if(temp=="description:"){
+          file>>description;
+        }else if(temp=="day:"){
+          file>>exerciseDay;
+        }else if(temp=="user_data"){
+
+        }
+      }while(!file.eof());
     }
   }
 }
