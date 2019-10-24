@@ -2,3 +2,4 @@
 *.conf
 *.o
 EPFLtutor
+.idea/

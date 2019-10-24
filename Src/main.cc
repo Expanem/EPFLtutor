@@ -8,6 +8,7 @@
 
 #include "configuration.h"
 #include "dataManager.h"
+#include "EntryText.h"
 
 #define TYPE_SPECIFIC_HELP 0
 #define TYPE_SUBJECT 1
@@ -58,7 +59,8 @@ int main(int argc, char *argv[]) {
           }
         }
     }
-    return 0;
+    draw(argc,argv);
+	return 0;
 }
 
 void create(int argc, char *argv[], int &argNb) {
