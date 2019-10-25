@@ -173,11 +173,20 @@ void CourseData::yamlRead() {
           if(temp != name){cout << "Incoherence in course name " << temp << " and " << name << endl; exit(-1);}
 
         }else if(temp=="description:"){
-          file>>description;
+          getline(file,description);
         }else if(temp=="day:"){
           file>>exerciseDay;
-        }else if(temp=="user_data"){
-
+        }else if(temp=="user_data:"){
+          file>>temp;
+          for (size_t i = 0; temp == "-"; i++)
+          {
+           getline(file,temp);
+           int segm = temp.find(":");
+           userContent[i][0] = temp.substr(0,segm);
+           userContent[1][1] = temp.substr(segm+1);
+           file>>temp;
+          }
+          
         }
       }while(!file.eof());
     }
